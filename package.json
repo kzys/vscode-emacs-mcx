@@ -389,6 +389,24 @@
 								"command": "workbench.action.gotoLine"
 						},
 						{
+								"key": "alt+g alt+g",
+								"command": "emacs-mcx.executeCommands",
+								"when": "editorFocus && findWidgetVisible",
+								"args": [
+										"closeFindWidget",
+										"workbench.action.gotoLine"
+								]
+						},
+						{
+								"key": "alt+g g",
+								"command": "emacs-mcx.executeCommands",
+								"when": "editorFocus && findWidgetVisible",
+								"args": [
+										"closeFindWidget",
+										"workbench.action.gotoLine"
+								]
+						},
+						{
 								"key": "alt+g n",
 								"command": "editor.action.marker.next"
 						},
@@ -409,37 +427,14 @@
 								"command": "editor.action.marker.prev"
 						},
 						{
-								"key": "alt+g alt+g",
-								"command": "emacs-mcx.executeCommands",
-								"when": "editorFocus && findWidgetVisible",
-								"args": [
-										"closeFindWidget",
-										"workbench.action.gotoLine"
-								]
-						},
-						{
-								"key": "alt+g g",
-								"command": "emacs-mcx.executeCommands",
-								"when": "editorFocus && findWidgetVisible",
-								"args": [
-										"closeFindWidget",
-										"workbench.action.gotoLine"
-								]
+								"key": "ctrl+l",
+								"command": "emacs-mcx.recenterTopBottom",
+								"when": "editorTextFocus"
 						},
 						{
 								"key": "ctrl+s",
 								"command": "actions.find",
 								"when": "!findWidgetVisible"
-						},
-						{
-								"key": "alt+shift+5",
-								"command": "editor.action.startFindReplaceAction",
-								"when": "editorFocus"
-						},
-						{
-								"command": "editor.action.replaceOne",
-								"key": "ctrl+enter",
-								"when": "editorFocus && findWidgetVisible"
 						},
 						{
 								"key": "ctrl+s",
@@ -455,6 +450,16 @@
 								"key": "ctrl+r",
 								"command": "editor.action.previousMatchFindAction",
 								"when": "findWidgetVisible"
+						},
+						{
+								"key": "alt+shift+5",
+								"command": "editor.action.startFindReplaceAction",
+								"when": "editorFocus"
+						},
+						{
+								"key": "ctrl+enter",
+								"command": "editor.action.replaceOne",
+								"when": "editorFocus && findWidgetVisible"
 						},
 						{
 								"key": "ctrl+alt+n",
@@ -487,9 +492,19 @@
 								"when": "editorTextFocus && !editorReadonly"
 						},
 						{
+								"key": "alt+backspace",
+								"command": "emacs-mcx.backwardKillWord",
+								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
 								"key": "ctrl+k",
 								"command": "emacs-mcx.killLine",
 								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
+								"key": "ctrl+shift+backspace",
+								"command": "emacs-mcx.killWholeLine",
+								"when": "editorTextFocus"
 						},
 						{
 								"key": "ctrl+w",
@@ -517,12 +532,27 @@
 								"when": "editorTextFocus && !editorReadonly"
 						},
 						{
+								"key": "ctrl+y",
+								"command": "closeFindWidget",
+								"when": "editorFocus && findWidgetVisible"
+						},
+						{
 								"key": "alt+y",
 								"command": "emacs-mcx.yank-pop",
 								"when": "editorTextFocus && !editorReadonly"
 						},
 						{
-								"key": "ctrl+y",
+								"key": "alt+y",
+								"command": "closeFindWidget",
+								"when": "editorFocus && findWidgetVisible"
+						},
+						{
+								"key": "ctrl+o",
+								"command": "lineBreakInsert",
+								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
+								"key": "ctrl+o",
 								"command": "closeFindWidget",
 								"when": "editorFocus && findWidgetVisible"
 						},
@@ -532,13 +562,13 @@
 								"when": "editorTextFocus && !editorReadonly"
 						},
 						{
-								"key": "ctrl+j",
-								"command": "emacs-mcx.newLine",
-								"when": "editorTextFocus && !editorReadonly"
+								"key": "ctrl+m",
+								"command": "closeFindWidget",
+								"when": "editorFocus && findWidgetVisible"
 						},
 						{
-								"key": "ctrl+o",
-								"command": "lineBreakInsert",
+								"key": "ctrl+j",
+								"command": "emacs-mcx.newLine",
 								"when": "editorTextFocus && !editorReadonly"
 						},
 						{
@@ -589,10 +619,6 @@
 								]
 						},
 						{
-								"key": "ctrl+x z",
-								"command": "workbench.action.toggleZenMode"
-						},
-						{
 								"key": "ctrl+/",
 								"command": "undo",
 								"when": "editorTextFocus && !editorReadonly"
@@ -635,9 +661,33 @@
 								]
 						},
 						{
-								"key": "ctrl+l",
-								"command": "emacs-mcx.recenterTopBottom",
-								"when": "editorTextFocus"
+								"key": "ctrl+x ctrl+l",
+								"command": "emacs-mcx.transformToLowercase",
+								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
+								"key": "alt+l",
+								"command": "emacs-mcx.transformToLowercase",
+								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
+								"key": "ctrl+x ctrl+u",
+								"command": "emacs-mcx.transformToUppercase",
+								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
+								"key": "alt+u",
+								"command": "emacs-mcx.transformToUppercase",
+								"when": "editorTextFocus && !editorReadonly"
+						},
+						{
+								"key": "alt+shift+6",
+								"command": "emacs-mcx.executeCommands",
+								"when": "editorTextFocus && !editorReadOnly",
+								"args": [
+										"emacs-mcx.previousLine",
+										"editor.action.joinLines"
+								]
 						},
 						{
 								"key": "escape",
@@ -725,6 +775,28 @@
 								"when": "editorTextFocus"
 						},
 						{
+								"key": "ctrl+'",
+								"command": "editor.action.triggerSuggest",
+								"when": "editorTextFocus"
+						},
+						{
+								"key": "ctrl+'",
+								"command": "toggleSuggestionDetails",
+								"when": "editorTextFocus && suggestWidgetVisible"
+						},
+						{
+								"key": "alt+x",
+								"command": "workbench.action.showCommands"
+						},
+						{
+								"key": "ctrl+alt+space",
+								"command": "workbench.action.toggleSidebarVisibility"
+						},
+						{
+								"key": "ctrl+x z",
+								"command": "workbench.action.toggleZenMode"
+						},
+						{
 								"key": "ctrl+x ctrl+f",
 								"command": "workbench.action.quickOpen"
 						},
@@ -739,21 +811,20 @@
 								"when": "editorTextFocus"
 						},
 						{
+								"key": "ctrl+x ctrl+n",
+								"command": "workbench.action.newWindow"
+						},
+						{
+								"key": "ctrl+x b",
+								"command": "workbench.action.showAllEditors"
+						},
+						{
 								"key": "ctrl+x k",
 								"command": "workbench.action.closeActiveEditor"
 						},
 						{
 								"key": "ctrl+x ctrl-k",
 								"command": "workbench.action.closeAllEditors"
-						},
-						{
-								"key": "ctrl+x k",
-								"command": "workbench.action.closeWindow",
-								"when": "!editorIsOpen"
-						},
-						{
-								"key": "ctrl+x ctrl+n",
-								"command": "workbench.action.newWindow"
 						},
 						{
 								"key": "ctrl+x 0",
@@ -778,6 +849,21 @@
 						{
 								"key": "ctrl+x o",
 								"command": "workbench.action.navigateEditorGroups"
+						},
+						{
+								"key": "ctrl+u",
+								"command": "emacs-mcx.universalArgument",
+								"when": "editorTextFocus"
+						},
+						{
+								"key": "ctrl+alt+f",
+								"command": "emacs-mcx.paredit.forwardSexp",
+								"when": "editorTextFocus"
+						},
+						{
+								"key": "ctrl+alt+b",
+								"command": "emacs-mcx.paredit.backwardSexp",
+								"when": "editorTextFocus"
 						},
 						{
 								"key": "ctrl+p",
@@ -820,16 +906,6 @@
 								"when": "inQuickOpen"
 						},
 						{
-								"key": "ctrl+'",
-								"command": "editor.action.triggerSuggest",
-								"when": "editorTextFocus"
-						},
-						{
-								"key": "ctrl+'",
-								"command": "toggleSuggestionDetails",
-								"when": "editorTextFocus && suggestWidgetVisible"
-						},
-						{
 								"key": "ctrl+shift+'",
 								"command": "editor.action.triggerParameterHints",
 								"when": "editorTextFocus"
@@ -839,77 +915,11 @@
 								"command": "workbench.action.togglePanel"
 						},
 						{
-								"key": "alt+x",
-								"command": "workbench.action.showCommands"
-						},
-						{
-								"key": "ctrl+alt+space",
-								"command": "workbench.action.toggleSidebarVisibility"
-						},
-						{
-								"key": "ctrl+x b",
-								"command": "workbench.action.showAllEditors"
-						},
-						{
-								"key": "ctrl+shift+backspace",
-								"command": "emacs-mcx.killWholeLine",
-								"when": "editorTextFocus"
-						},
-						{
-								"key": "ctrl+x ctrl+l",
-								"command": "emacs-mcx.transformToLowercase",
-								"when": "editorTextFocus && !editorReadonly"
-						},
-						{
-								"key": "alt+l",
-								"command": "emacs-mcx.transformToLowercase",
-								"when": "editorTextFocus && !editorReadonly"
-						},
-						{
-								"key": "ctrl+x ctrl+u",
-								"command": "emacs-mcx.transformToUppercase",
-								"when": "editorTextFocus && !editorReadonly"
-						},
-						{
-								"key": "alt+u",
-								"command": "emacs-mcx.transformToUppercase",
-								"when": "editorTextFocus && !editorReadonly"
-						},
-						{
-								"key": "alt+backspace",
-								"command": "emacs-mcx.backwardKillWord",
-								"when": "editorTextFocus && !editorReadonly"
-						},
-						{
-								"key": "ctrl+u",
-								"command": "emacs-mcx.universalArgument",
-								"when": "editorTextFocus"
-						},
-						{
-								"key": "ctrl+alt+f",
-								"command": "emacs-mcx.paredit.forwardSexp",
-								"when": "editorTextFocus"
-						},
-						{
-								"key": "ctrl+alt+b",
-								"command": "emacs-mcx.paredit.backwardSexp",
-								"when": "editorTextFocus"
-						},
-						{
 								"key": "ctrl+i",
 								"command": "emacs-mcx.executeCommands",
 								"args": [
 										"emacs-mcx.forwardChar",
 										"emacs-mcx.nextLine"
-								]
-						},
-						{
-								"key": "alt+shift+6",
-								"command": "emacs-mcx.executeCommands",
-								"when": "editorTextFocus && !editorReadOnly",
-								"args": [
-										"emacs-mcx.previousLine",
-										"editor.action.joinLines"
 								]
 						}
 				]
